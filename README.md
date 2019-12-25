@@ -1,10 +1,12 @@
-# Data Wrangling with MongoDB - Visualize restaurants using OpenStreetMap
+# Data Wrangling with MongoDB
 
-Download tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html, clean the restaurant dataset and find out its locations. Show the restaurants in a map using Folio
+This repository is a semester project for a class IM_DMDB using Python and MongoDB. Download .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html,
+clean the dataset, upload it to Atlas MongoDB, find out geographical coordinates using geopy and visualize them on a map with Folio. 
 
-## Getting Started
+## Visualize 
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+. The goal of this project is:
+
 
 ### Prerequisites
 
