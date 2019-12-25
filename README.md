@@ -13,6 +13,15 @@ pip install -r requirements.txt
 ### Architecture & How to run
 ![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/architecture.png)
 
+1. download .tsv files from page, clean it and upload to MongoDB
+```
+python clean_data.py
+```
+or 
+```
+python3 clean_data.py
+```
+
 
 ## Built With
 
