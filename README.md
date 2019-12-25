@@ -62,9 +62,9 @@ python3 visualize_restaurants.py
 
 ### Used libraries
 * [Beautiful Soup](https://pypi.org/project/beautifulsoup4/) - Web scraping
-* [Folium](https://pypi.org/project/folium/) - Visualize records in a map
-* [Geopy](https://pypi.org/project/geopy/) - Get real world coordinates of an addresss
+* [folium](https://pypi.org/project/folium/) - Visualize records in a map
+* [geopy](https://pypi.org/project/geopy/) - Get real world coordinates of an addresss
 * [Jellyfish](https://pypi.org/project/jellyfish/) - Duplicate detection, compute similarity distance between strings
 * [pandas](https://pypi.org/project/pandas/) - Simplified data structures
 * [PyMongo](https://pypi.org/project/pymongo/) - MongoDB in Python
-* [tqdm](https://pypi.org/project/tqdm/) - Progress bar
+* [tqdm](https://pypi.org/project/tqdm/) - Progress bar in command prompt
