@@ -1,6 +1,7 @@
 # Data Wrangling with MongoDB
 
 This repository is a semester project for a class IM_DMDB, all scripts are coded in Python 3. Goal of this project is to visualize restaurants on a map from a dirty .tsv file.
+
 ![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/map.png)
 
 ### Install
@@ -37,7 +38,7 @@ python get_locations.py
 ```
 or 
 ```
-python get_locations.py
+python3 get_locations.py
 ```
 ## Built With
 
