@@ -1,7 +1,6 @@
 # Data Wrangling with MongoDB
 
-This repository is a semester project for a class IM_DMDB, all scripts are coded in Python 3. Download .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html,
-clean the dataset, upload it to Atlas MongoDB, find out geographical coordinates using geopy and visualize them on a map with Folio. 
+This repository is a semester project for a class IM_DMDB, all scripts are coded in Python 3. Goal of this project is to visualize restaurants on a map from a dirty .tsv file.
 ![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/map.png)
 
 ### Install
@@ -11,11 +10,16 @@ pip install -r requirements.txt
 ```
 
 ### Architecture
-Right now, for demonstrational purpose, database on Atlas does not exist. The script clean_data.py creates this database
+Right now, for demonstrational purposes, the database on Atlas does not exist. The script clean_data.py creates the database
 ![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/architecture.png)
 
 ### How to run
-1. download .tsv files from page, clean it and upload to MongoDB
+1. clean_data.py
+- downloads .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html
+- clean the restaurant dataset and save it locally
+- find duplicate pairs and save them into a .tsv file
+- upload clean dataset to Atlas MongoDB
+
 ```
 python clean_data.py
 ```
@@ -24,8 +28,17 @@ or
 python3 clean_data.py
 ```
 2. find the location
+- get geopy's response to city
+- find lattitude and longitude for each restaurant
+The OpenStreetMap server sometimes returned Error 429: Too many requests. So to prevent this error I added a sleep timer between every request set to one second. The timer could be deleted/lowered to speed up the process with a possibility, that the server would return an error.
 
-
+```
+python get_locations.py
+```
+or 
+```
+python get_locations.py
+```
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
