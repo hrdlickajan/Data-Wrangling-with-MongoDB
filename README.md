@@ -23,9 +23,9 @@ Right now, for demonstrational purposes, the database on Atlas does not exist.
 Run the scripts in following order:
 #### 1. clean_data.py
 - downloads .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html
-- clean the restaurant dataset and save it locally
-- find duplicate pairs and save them into a .tsv file
-- upload clean dataset to Atlas MongoDB
+- cleans the restaurant dataset and save it locally
+- finds duplicate pairs and save them into a .tsv file
+- uploads clean dataset to Atlas MongoDB
 
 ```
 python clean_data.py
@@ -35,9 +35,10 @@ or
 python3 clean_data.py
 ```
 #### 2. get_locations.py
-- load restaurants collection from Atlas
-- get geopy's response to city
-- find lattitude and longitude for each restaurant
+- loads restaurants collection from Atlas
+- gets geopy's response to city
+- finds lattitude and longitude for each restaurant
+
 The OpenStreetMap server sometimes returned Error 429: Too many requests. So to prevent this error I added a sleep timer between every request set to one second. The timer could be deleted/lowered to speed up the process with a possibility, that the server would return an error.
 
 ```
@@ -48,9 +49,9 @@ or
 python3 get_locations.py
 ```
 #### 3. visualize_restaurants.py
-- Load every record from Atlas
+- Loads every record from Atlas
 - If the record has coordinates, visualize it in a map using Folio
-- Cluster map markers that are near eachother
+- Clusters map markers that are near eachother
 
 ```
 python visualize_restaurants.py
@@ -59,7 +60,17 @@ or
 ```
 python3 visualize_restaurants.py
 ```
+#### Evaluating duplicates - TODO.py
+- This script computes precision, recall, accuracy and F-measure between gold standard file
+and restaurants_duplicates.tsv file created in clean_data.py.
 
+```
+python TODO.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
+```
+or
+```
+python3 TODO.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
+```
 ### Used libraries
 * [Beautiful Soup](https://pypi.org/project/beautifulsoup4/) - Web scraping
 * [folium](https://pypi.org/project/folium/) - Visualize records in a map
