@@ -6,7 +6,7 @@ clean the dataset, upload it to Atlas MongoDB, find out geographical coordinates
 
 ### Modules
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 
