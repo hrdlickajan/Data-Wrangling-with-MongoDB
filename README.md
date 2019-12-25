@@ -2,7 +2,10 @@
 
 This repository is a semester project for a class IM_DMDB, all scripts are coded in Python 3. Goal of this project is to visualize restaurants on a map from a dirty .tsv file.
 
-![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/map.png)
+<p align="center"> 
+<img src="https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/map.png">
+</p>
+
 
 ### Install
 File with requirements is included in this repository
