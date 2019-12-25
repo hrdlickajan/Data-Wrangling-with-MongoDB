@@ -62,7 +62,7 @@ python3 visualize_restaurants.py
 ```
 #### Evaluating duplicates - TODO.py
 - This script computes precision, recall, accuracy and F-measure between gold standard file
-and restaurants_duplicates.tsv file created in clean_data.py.
+and .tsv file created in clean_data.py.
 
 ```
 python TODO.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
