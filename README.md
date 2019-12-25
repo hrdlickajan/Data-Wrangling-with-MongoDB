@@ -6,18 +6,18 @@ This repository is a semester project for a class IM_DMDB, all scripts are coded
 <img src="https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/map.png">
 </p>
 
-
 ### Install
 File with requirements is included in this repository
+
 ```
 pip install -r requirements.txt
 ```
 
 ### Architecture
-Right now, for demonstrational purposes, the database on Atlas does not exist. The script clean_data.py creates the database
 ![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/architecture.png)
 
 ### How to run
+Right now, for demonstrational purposes, the database on Atlas does not exist.
 1. clean_data.py
 - downloads .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html
 - clean the restaurant dataset and save it locally
