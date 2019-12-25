@@ -18,6 +18,7 @@ pip install -r requirements.txt
 
 ### How to run
 Right now, for demonstrational purposes, the database on Atlas does not exist.
+Run the scripts in following order:
 #### 1. clean_data.py
 - downloads .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html
 - clean the restaurant dataset and save it locally
