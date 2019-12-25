@@ -2,13 +2,16 @@
 
 This repository is a semester project for a class IM_DMDB, all scripts are coded in Python 3. Download .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html,
 clean the dataset, upload it to Atlas MongoDB, find out geographical coordinates using geopy and visualize them on a map with Folio. 
-![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/map.png)
+![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/map.png)
 
-### Modules
+### Install
+File with requirements is included in this repository
 ```
 pip install -r requirements.txt
 ```
 
+### Architecture & How to run
+![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/architecture.png)
 
 
 ## Built With
