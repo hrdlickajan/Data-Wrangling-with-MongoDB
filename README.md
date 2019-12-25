@@ -10,9 +10,11 @@ File with requirements is included in this repository
 pip install -r requirements.txt
 ```
 
-### Architecture & How to run
+### Architecture
+Right now, for demonstrational purpose, database on Atlas does not exist. The script clean_data.py creates this database
 ![alt text](https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/architecture.png)
 
+### How to run
 1. download .tsv files from page, clean it and upload to MongoDB
 ```
 python clean_data.py
@@ -21,6 +23,7 @@ or
 ```
 python3 clean_data.py
 ```
+2. find the location
 
 
 ## Built With
