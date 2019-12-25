@@ -65,6 +65,6 @@ python3 visualize_restaurants.py
 * [Folium](https://pypi.org/project/folium/) - Visualize records in a map
 * [Geopy](https://pypi.org/project/geopy/) - Get real world coordinates of an addresss
 * [Jellyfish](https://pypi.org/project/jellyfish/) - Duplicate detection, compute similarity distance between strings
-* [Pandas](https://pypi.org/project/pandas/) - Simplified data structures
-* [Pymongo](https://pypi.org/project/pymongo/) - MongoDB in Python
-* [Tqdm](https://pypi.org/project/tqdm/) - Progress bar
+* [pandas](https://pypi.org/project/pandas/) - Simplified data structures
+* [PyMongo](https://pypi.org/project/pymongo/) - MongoDB in Python
+* [tqdm](https://pypi.org/project/tqdm/) - Progress bar
