@@ -39,7 +39,7 @@ python3 clean_data.py
 - gets geopy's response to city
 - finds lattitude and longitude for each restaurant
 
-The OpenStreetMap server sometimes returned Error 429: Too many requests. So to prevent this error I added a sleep timer between every request set to one second. The timer could be deleted/lowered to speed up the process with a possibility that the server would return an error.
+The OpenStreetMap server sometimes returned Error 429: Too many requests. So to prevent this error I added a sleep timer between every request set to one second. The timer could be deleted/lowered to speed up the process with a possibility that the server would return an error - see [Nominatim usage policy](https://operations.osmfoundation.org/policies/nominatim/).
 
 ```
 python get_locations.py
