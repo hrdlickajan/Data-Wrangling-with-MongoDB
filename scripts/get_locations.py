@@ -25,10 +25,10 @@ def main():
         progress_loop.set_description("Getting latitudes and longitutes")
         # find the city directly in openstreetmaps to prevent dualities
         geocode_response = geolocator.geocode(restaurant["city"])
-        time.sleep(0.5)  # delay between each request to avoid 429 response
+        time.sleep(1)  # delay between each request to avoid 429 response
         location = geolocator.geocode(restaurant["address"] + ", "
                                       + str(geocode_response))
-        time.sleep(0.5)
+        time.sleep(1)
         progress_loop.update(1)
         if location is None:
             restaurants.update_one(restaurant, {"$set": {
