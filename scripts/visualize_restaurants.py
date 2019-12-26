@@ -10,34 +10,43 @@ client = MongoClient("mongodb://analytics:analytics-password@test-shard-00-00-"
                      ".net:27017,test-shard-00-02-03ow6.mongodb.net:27017/te"
                      "st?ssl=true&replicaSet=test-shard-0&authSource=admin&r"
                      "etryWrites=true&w=majority")
+map_path = "data/restaurants_map.html"
 
 
 def main():
     db = client.get_database("dmdb_project")
     restaurants = db.restaurants
 
-    restaurants_without_coordinates = 0
+    map = folium.Map(location=[35, -100], zoom_start=5)  # default zoom into US
+    marker_cluster = MarkerCluster()  # create clusters for markers near
 
-    m = folium.Map(location=[35, -100], zoom_start=5)  # default zoom into USA
-    mc = MarkerCluster()  # create clusters for markers near eachother
+    visualized_restaurants = []
+    for restaurant in restaurants.find({"latitude": {"$exists": True}}):
 
-    for restaurant in restaurants.find():
-        if "latitude" not in restaurant:
-            restaurants_without_coordinates += 1
+        latitude = restaurant["latitude"]
+        longitude = restaurant["longitude"]
+        name = restaurant["name"]
+        type = restaurant["type"]
+        # do not show the same restaurant twice
+        if (latitude, longitude, name) in visualized_restaurants:
             continue
+
         # add restaurant to a cluster
-        mc.add_child(folium.Marker([restaurant["latitude"],
-                                    restaurant["longitude"]],
-                                   popup="<strong>" + restaurant["name"]
-                                   + "</strong >\n " + restaurant["type"],
-                                   icon=folium.Icon(icon="cutlery",
-                                                    prefix='fa'),
-                                   tooltip="<strong>" + restaurant["name"]
-                                   + "</strong>"))
-    mc.add_to(m)
-    m.save("data/restaurants_map.html")  # save map
+        marker_cluster.add_child(folium.Marker([latitude, longitude],
+                                               popup="<strong>" + name
+                                               + "</strong >\n " + type,
+                                               icon=folium.Icon(icon="cutlery",
+                                                                prefix='fa'),
+                                               tooltip="<strong>" + name
+                                               + "</strong>"))
+
+        visualized_restaurants.append((latitude, longitude, name))
+
+    marker_cluster.add_to(map)
+    map.save(map_path)  # save map
+
     print("Restaurants without coordinates: "
-          + str(restaurants_without_coordinates))
+          + str(restaurants.count({"latitude": {"$exists": False}})))
 
 
 if __name__ == "__main__":

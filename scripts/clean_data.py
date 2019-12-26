@@ -137,9 +137,10 @@ def clean_tsv(restaurants):
 
 
 def download_tsv_files():
-    """Download two .tsv files from hpi.de and save them into folder "data"
+    """Download three .tsv files from hpi.de and save them into folder "data"
     first file - dirty tsv file with restaurants
     second file - list of restaurant duplicates
+    third file - list of non duplicates pairs
     """
     base_url = "https://hpi.de/"
     os.makedirs('data', exist_ok=True)  # store .tsv in folder 'data'
@@ -176,22 +177,27 @@ def upload_to_mongo(restaurants):
     the database already exists.
     """
     print("Uploading to Atlas MongoDB")
-    client = MongoClient("mongodb://analytics:analytics-password@test-shard-"
-                         "00-00-03ow6.mongodb.net:27017,test-shard-00-01-03o"
-                         "w6.mongodb.net:27017,test-shard-00-02-03ow6.mongod"
-                         "b.net:27017/test?ssl=true&replicaSet=test-shard-0"
-                         "&authSource=admin&retryWrites=true&w=majority")
-    db = client["dmdb_project"]
-    if db.restaurants.count_documents({}) == 0:
+    mongo_client = MongoClient("mongodb://analytics:analytics-password@test-"
+                               "shard-00-00-03ow6.mongodb.net:27017,test-sh"
+                               "ard-00-01-03ow6.mongodb.net:27017,test-shar"
+                               "d-00-02-03ow6.mongodb.net:27017/test?ssl=tr"
+                               "ue&replicaSet=test-shard-0&authSource=admin"
+                               "&retryWrites=true&w=majority")
+    mongo_db = mongo_client["dmdb_project"]
+    restaurants_collection = mongo_db.restaurants
+    if restaurants_collection.count_documents({}) == 0:
         print("Created a new collection named \"restaurants\"")
-        db.restaurants.insert(restaurants)
+        restaurants_collection.insert(restaurants)
+    else:
+        print("Collection named \"restaurants\" already exists, "
+              "no record inserted")
 
 
 def save_locally(restaurants):
     """Save restaurant tsv file to hard drive"""
     print("Saving clean TSV locally to " + clean_file_path)
     df = pd.DataFrame(restaurants)
-    df.to_csv(clean_file_path, encoding="utf-8", index=False)
+    df.to_csv(clean_file_path, sep='\t', encoding="utf-8", index=False)
 
 
 def find_duplicates(restaurants_clean):
