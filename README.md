@@ -23,8 +23,8 @@ Right now, for demonstrational purposes, the database on Atlas does not exist.
 Run the scripts in following order:
 #### 1. clean_data.py
 - downloads .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html
-- cleans the restaurant dataset and save it locally
-- finds duplicate pairs and save them into a .tsv file
+- cleans the restaurant dataset and saves it locally
+- finds duplicate pairs and saves them into a .tsv file
 - uploads clean dataset to Atlas MongoDB
 
 ```
