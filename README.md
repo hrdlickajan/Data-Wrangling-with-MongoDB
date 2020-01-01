@@ -19,47 +19,36 @@ pip install -r requirements.txt
 </p>
 
 ### How to run
-Right now, for demonstrational purposes, the database on Atlas does not exist.
-Run the scripts in following order:
+There is already a database on Atlas named "dmdb_project" with everything prepared. You can create your own database by writing your database name as script argument.
 #### 1. clean_data.py
 - downloads .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html
 - cleans the restaurant dataset and saves it locally
 - finds duplicate pairs and saves them into a .tsv file
-- uploads clean dataset to Atlas MongoDB
+- uploads clean dataset to Atlas MongoDB to a selected database
 
 ```
-python clean_data.py
+python clean_data.py [database_name]
 ```
-or 
-```
-python3 clean_data.py
-```
+
 #### 2. get_locations.py
-- loads restaurants collection from Atlas
+- loads restaurants collection from selected Atlas database
 - gets geopy's Nominatim response to city
 - finds lattitude and longitude for each restaurant
 
 The OpenStreetMap server sometimes returned Error 429: Too many requests. So to prevent this error I added a sleep timer between every request set to one second. The timer could be deleted/lowered to speed up the process with a possibility that the server would return an error - see [Nominatim usage policy](https://operations.osmfoundation.org/policies/nominatim/).
 
 ```
-python get_locations.py
+python get_locations.py [database_name]
 ```
-or 
-```
-python3 get_locations.py
-```
+
 #### 3. visualize_restaurants.py
-- Loads every record from Atlas
-- If the record has coordinates, visualize it in a map using folium
+- Load record from selected database, if it has coordinates, visualize it in a map using folium
 - Clusters map markers that are near eachother
 
 ```
-python visualize_restaurants.py
+python visualize_restaurants.py [database_name]
 ```
-or 
-```
-python3 visualize_restaurants.py
-```
+
 #### Evaluating duplicates - TODO.py
 - This script computes precision, recall, accuracy and F-measure between gold standard file
 and .tsv file created in clean_data.py.
