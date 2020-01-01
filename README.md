@@ -50,16 +50,16 @@ python get_locations.py [database_name]
 python visualize_restaurants.py [database_name]
 ```
 
-#### Evaluating duplicates - TODO.py
+#### Evaluating duplicates - gold_standard_evaluation.py
 - This script computes precision, recall, accuracy and F-measure between gold standard file
 and .tsv file created in clean_data.py.
 
 ```
-python TODO.py [path to gold standard duplicates] [path to clean dataset] [path to non-duplicates]
+python gold_standard_evaluation.py [path to gold standard duplicates] [path to clean dataset] [path to non-duplicates]
 ```
 The files are downloaded or created in script clean_data.py
 ```
-python TODO.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
+python gold_standard_evaluation.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
 ```
 
 ### Used libraries
