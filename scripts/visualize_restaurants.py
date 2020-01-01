@@ -56,6 +56,7 @@ def main(database_name):
 
     marker_cluster.add_to(map)
     map.save(map_path)  # save map
+    print("Map saved to " + "data/restaurants_map.html")
 
 
 if __name__ == "__main__":
