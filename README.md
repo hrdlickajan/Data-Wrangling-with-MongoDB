@@ -19,7 +19,7 @@ pip install -r requirements.txt
 </p>
 
 ### How to run
-
+Navigate to folder "scripts" and run following:
 #### 1. clean_data.py
 - downloads .tsv files from https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html
 - cleans the restaurant dataset and saves it locally
