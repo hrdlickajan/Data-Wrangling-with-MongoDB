@@ -55,12 +55,13 @@ python visualize_restaurants.py [database_name]
 and .tsv file created in clean_data.py.
 
 ```
+python TODO.py [path to gold standard duplicates] [path to clean tsv] [path to tsv with non-duplicates]
+```
+The files are downloaded or created in script clean_data.py
+```
 python TODO.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
 ```
-or
-```
-python3 TODO.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
-```
+
 ### Used libraries
 * [Beautiful Soup](https://pypi.org/project/beautifulsoup4/) - Web scraping
 * [folium](https://pypi.org/project/folium/) - Visualize records in a map
