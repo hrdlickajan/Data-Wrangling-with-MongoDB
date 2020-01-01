@@ -59,7 +59,7 @@ python gold_standard_evaluation.py [path to gold standard duplicates] [path to d
 ```
 The files are downloaded or created in script clean_data.py
 ```
-python gold_standard_evaluation.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_ndpl.tsv
+python gold_standard_evaluation.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_NDPL.tsv
 ```
 
 ### Used libraries
