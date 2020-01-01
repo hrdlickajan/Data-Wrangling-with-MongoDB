@@ -55,7 +55,7 @@ python visualize_restaurants.py [database_name]
 and .tsv file created in clean_data.py.
 
 ```
-python gold_standard_evaluation.py [path to gold standard duplicates] [path to clean dataset] [path to non-duplicates]
+python gold_standard_evaluation.py [path to gold standard duplicates] [path to duplicates found by classifier] [path to non-duplicates]
 ```
 The files are downloaded or created in script clean_data.py
 ```
