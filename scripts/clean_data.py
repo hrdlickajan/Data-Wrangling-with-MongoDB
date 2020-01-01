@@ -9,6 +9,17 @@ import shutil
 import re
 from jellyfish import jaro_winkler
 from pymongo import MongoClient
+import argparse
+
+parser = argparse.ArgumentParser(description='Downloads .tsv files from \
+https://hpi.de/. Cleans restaurant dataset and saves it as .tsv file. \
+Finds duplicate pairs and saves them to .tsv file. \
+Uploads clean .tsv to Atlas MongoDB, argument is collection name.')
+
+parser.add_argument('database_name', type=str,
+                    help='Database name on Atlas MongoDB, create new if it \
+                    does not exist.')
+args = parser.parse_args()
 
 dataset_path = "data/restaurants.tsv"
 ndpl_path = "data/restaurants_NDPL.tsv"
@@ -171,7 +182,7 @@ def download_url(url, path):
     del response
 
 
-def upload_to_mongo(restaurants):
+def upload_to_mongo(restaurants, database_name):
     """Upload dictionary with restaurant records to Atlas, create a new database
     "dmdb_project" and a collection named "restaurants". Skip the upload if
     the database already exists.
@@ -183,14 +194,16 @@ def upload_to_mongo(restaurants):
                                "d-00-02-03ow6.mongodb.net:27017/test?ssl=tr"
                                "ue&replicaSet=test-shard-0&authSource=admin"
                                "&retryWrites=true&w=majority")
-    mongo_db = mongo_client["dmdb_project"]
-    restaurants_collection = mongo_db.restaurants
+    database = mongo_client[database_name]
+    restaurants_collection = database.restaurants
     if restaurants_collection.count_documents({}) == 0:
-        print("Created a new collection named \"restaurants\"")
         restaurants_collection.insert(restaurants)
+        print("Created a new database \"" + database_name + "\" and collection"
+              + " \"restaurants\". Uploaded "
+              + str(restaurants_collection.count_documents({})) + " records")
     else:
-        print("Collection named \"restaurants\" already exists, "
-              "no record inserted")
+        print("Database \"" + database_name + "\" and collection "
+              + "\"restaurants\" already exists, no record inserted")
 
 
 def save_locally(restaurants):
@@ -228,7 +241,7 @@ def find_duplicates(restaurants_clean):
     return os.path.exists(duplicates_path)
 
 
-def main():
+def main(database_name):
     if not download_tsv_files():
         print("TSV file not downloaded correctly")
         return
@@ -239,8 +252,8 @@ def main():
         print("File with duplicates was not created")
     else:
         print("File with duplicates saved to " + duplicates_path)
-    upload_to_mongo(restaurants_clean)
+    upload_to_mongo(restaurants_clean, database_name)
 
 
 if __name__ == "__main__":
-    main()
+    main(args.database_name)

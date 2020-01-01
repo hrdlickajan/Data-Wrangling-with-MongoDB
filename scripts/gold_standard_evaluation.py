@@ -34,7 +34,7 @@ def main(gold_standard_tsv, my_tsv, ndpl_tsv):
     set_gold = set([tuple(x) for x in gold_duplicates])
     set_classifier = set([tuple(x) for x in classifier_duplicates])
 
-    # classify duplicate pairs
+    # classify
     true_positives = np.array([x for x in set_gold & set_classifier])
     false_negatives = np.array([x for x in set_gold - set_classifier])
     false_positives = np.array([x for x in set_classifier - set_gold])
@@ -46,7 +46,6 @@ def main(gold_standard_tsv, my_tsv, ndpl_tsv):
     FP_G = len(false_positives)
     FN_G = len(false_negatives)
     TN_G = N_G-FP_G
-
     precision = TP_G/(TP_G + FP_G)
     recall = TP_G/(TP_G + FN_G)
     accuracy = (TP_G + TN_G)/G
