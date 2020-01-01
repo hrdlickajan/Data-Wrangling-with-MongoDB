@@ -13,7 +13,7 @@ File with requirements is included in this repository
 pip install -r requirements.txt
 ```
 
-### Architecture
+### Structure
 <p align="center"> 
 <img src="https://raw.githubusercontent.com/hrdlickajan/dmdb_restaurants/master/img/architecture.png">
 </p>
