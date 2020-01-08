@@ -57,7 +57,7 @@ and .tsv file created in clean_data.py.
 ```
 python gold_standard_evaluation.py [path to gold standard duplicates] [path to duplicates found by classifier] [path to non-duplicates]
 ```
-The files are downloaded or created in script clean_data.py
+The files are downloaded or created in script clean_data.py, so if you have already ran the script without any erorr, you can use following:
 ```
 python gold_standard_evaluation.py data/restaurants_DPL.tsv data/restaurants_duplicates.tsv data/restaurants_NDPL.tsv
 ```
