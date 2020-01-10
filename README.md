@@ -26,7 +26,7 @@ Download the repository. Navigate to folder "scripts" and run following:
 - finds duplicate pairs and saves them into a .tsv file
 - uploads clean dataset to Atlas MongoDB to a selected database
 
-There is already a database on Atlas named "dmdb_project" with everything prepared. You can create your own database by writing your database name as script argument.
+There is already a database on Atlas named "dmdb_project" with everything prepared, this is the final product. You can create your own database by writing your database name as script argument.
 ```
 python clean_data.py [database_name]
 ```
